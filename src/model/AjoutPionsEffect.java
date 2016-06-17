@@ -14,15 +14,15 @@ public class AjoutPionsEffect extends Effect {
      */
     @Override
     public void playEffect(int line, int column, Game game) {
-        for (int i = 0; i < game.getBoard().getWidth(); i++) {
-            if (game.getBoard().getTileIJ(0, i).getStatus() == -1) {
+        for (int i = 0; i < game.getBoard().getWidth(); i++) { // Pour toutes les collones
+            if (game.getBoard().getTileIJ(0, i).getStatus() == -1) { // Si la collone n'est pas pleine de jetons
                 int y = 0;
                 while (game.getBoard().getTileIJ(y, i).getStatus() != -1 && y > game.getBoard().getHeight()) {
-                    y++;
+                    y++; // On se positionne dans la collone, le plus bas possible
                 }
                 if (y > 0) {
                     y--;
-                    game.getBoard().getTileIJ(y, i).setStatus(game.getCurrentPlayer().getId());
+                    game.getBoard().getTileIJ(y, i).setStatus(game.getCurrentPlayer().getId()); // on place un jeton
                 }
                 Player tmp = game.Win();
                 if (tmp != null) {
